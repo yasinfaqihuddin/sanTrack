@@ -1,0 +1,177 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f9; */
+    background-color: #0d6efd;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.header {
+    background-color: #24292f;
+    padding: 10px 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-family: "Pragati Narrow", sans-serif;
+    color: #f1f1f1;
+    font-size: 26px;
+    /* font-weight: bold; */
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 16px;
+}
+
+.btn-demo {
+    padding: 10px 20px;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.btn-demo:hover {
+    background-color: #c9302c;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+    padding: 50px 20px;
+    height: 90vh;
+    background-color: #0d6efd;
+    color: #fff;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero-content {
+    flex: 1;
+    margin-left: 30px;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    /* font-size: 2.5rem; */
+    font-size: 33px;
+    margin-bottom: 20px;
+}
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-content .buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    padding: 15px 30px;
+    background-color: #ffc107;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+}
+
+.btn-secondary {
+    padding: 15px 30px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    color: #0d6efd;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.devices {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* .device {
+    width: 200px;
+    height: 120px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: #333;
+} */
+
+.device.laptop {
+    width: 300px;
+    height: 200px;
+}
+
+.device.tablet {
+    width: 250px;
+    height: 160px;
+}
+
+.device.phone {
+    width: 150px;
+    height: 80px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+    }
+}
