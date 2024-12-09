@@ -95,6 +95,13 @@ $data = mysqli_fetch_array($siswa);
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    <label for="walisantri" class="col-sm-2 col-form-label">Wali Santri</label>
+                                    <label for="walisantri" class="col-sm-1 col-form-label">:</label>
+                                    <div class="col-sm-9" style="margin-left: -50px;">
+                                        <input type="text" name="walisantri" required class="form-control border-0 border-bottom ps-2" id="walisantri" value="<?= $data['wali_santri'] ?>">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
                                     <label for="walsan" class="col-sm-2 col-form-label">No.Walsan</label>
                                     <label for="walsan" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">

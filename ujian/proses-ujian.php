@@ -12,6 +12,7 @@ if(isset($_POST['simpan'])) {
     $noUjian    = htmlspecialchars($_POST['noUjian']);
     $tgl        = htmlspecialchars($_POST['tgl']);
     $nis        = htmlspecialchars($_POST['nis']);
+    $nama       = htmlspecialchars($_POST['nama']);
     $jurusan    = htmlspecialchars($_POST['jurusan']);
     $sum        = htmlspecialchars($_POST['sum']);
     $min        = htmlspecialchars($_POST['min']);
@@ -28,10 +29,10 @@ if(isset($_POST['simpan'])) {
     $jurus = $_POST['jurus'];
     $nilai = $_POST['nilai'];
 
-    // var_dump($mapel, $jurus, $nilai);
+    // var_dump($_POST);
     // exit();
 
-    mysqli_query($koneksi, "INSERT INTO tbl_ujian VALUES('$noUjian', '$tgl', '$nis', '$jurusan', $sum, $min, $max, $avg, '$hasilUjian')");
+    mysqli_query($koneksi, "INSERT INTO tbl_ujian VALUES('$noUjian', '$tgl', '$nis', '$nama', '$jurusan', $sum, $min, $max, $avg, '$hasilUjian')");
 
     // foreach ($mapel as $key => $mpl) {
     //     mysqli_query($koneksi, "INSERT INTO tbl_ujian VALUES('$noUjian', '$tgl', '$nis', '$jurusan', $sum, $min, $max, $avg, '$hasilUjian')");
@@ -44,12 +45,6 @@ if(isset($_POST['simpan'])) {
             exit();
         }
     }
-    
-    
-
-    // foreach ($mapel as $key => $mpl) {
-    //     mysqli_query($koneksi, "INSERT INTO tbl_nilai_ujian VALUES(null, '$noUjian', '$mpl', '$jurus[$key]', $nilai[$key])");
-    // }
 
     header("location:nilai-ujian.php?msg=$hasilUjian&nis=$nis");
     return;

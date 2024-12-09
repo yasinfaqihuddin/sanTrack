@@ -41,10 +41,14 @@ $data = mysqli_fetch_array($queryPelajaran);
                                     <input type="text" class="form-control" id="pelajaran" name="pelajaran" placeholder="Nama Pelajaran" value="<?= $data['pelajaran'] ?>" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="kode" class="form-label ps-1">Kode</label>
+                                    <input type="text" name="kode" id="kode" class="form-control" placeholder="Kode Pelajaran" value="<?= $data['kode'] ?>">
+                                </div>
+                                <div class="mb-3">
                                     <label for="jurusan" class="form-label ps-1">Jurusan</label>
                                     <select name="jurusan" id="jurusan" class="form-select" required>
                                         <?php
-                                        $jurusan = ["Umum","Kimia Industri","Kimia Analis"];
+                                        $jurusan = ["Umum","Ilmu Al-Quran","Bahasa Arab"];
                                         foreach ($jurusan as $jrs) {
                                             if ($data['jurusan'] == $jrs) { ?>
                                                 <option value="<?= $jrs ?>" selected><?= $jrs ?></option>
@@ -89,6 +93,7 @@ $data = mysqli_fetch_array($queryPelajaran);
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col"><center>Kode</center></th>
                                         <th scope="col"><center>Mata Pelajaran</center></th>
                                         <th scope="col"><center>Jurusan</center></th>
                                         <th scope="col"><center>Guru</center></th>
@@ -101,6 +106,7 @@ $data = mysqli_fetch_array($queryPelajaran);
                                     ?>
                                     <tr>
                                         <th scope="row"><?= $no ?></th>
+                                        <td><?= $data['kode'] ?></td>
                                         <td><?= $data['pelajaran'] ?></td>
                                         <td><?= $data['jurusan'] ?></td>
                                         <td><?= $data['guru'] ?></td>

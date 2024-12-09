@@ -11,7 +11,7 @@ while ($data = mysqli_fetch_array($queryPelajaran)) { ?>
         <td align="center"><?= $no++ ?></td>
         <td><input type="text" name="mapel[]" value="<?= $data['pelajaran'] ?>" class="border-0 bg-transparent col-12" readonly></td>
         <td><input type="text" name="jurus[]" value="<?= $data['jurusan'] ?>" class="border-0 bg-transparent col-12" readonly></td>
-        <td><input type="number" name="nilai[]" value="0" min="0" max="100" step="5" class="form-control nilai text-center" onchange="fnhitung()"></td>
+        <td><input type="number" name="nilai[]" value="0" min="0" max="100" class="form-control nilai text-center" onchange="fnhitung()"></td> <!-- step="5" membuat kelipatan 5 -->
     </tr>
 <?php
 }

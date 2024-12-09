@@ -17,9 +17,9 @@ $queryNis = mysqli_query($koneksi, "SELECT max(nis) as maxnis FROM tbl_siswa");
 $data = mysqli_fetch_array($queryNis);
 $maxnis = $data["maxnis"];
 
-$noUrut = (int) substr($maxnis, 3, 3);
+$noUrut = (int) substr($maxnis, 2, 3);
 $noUrut++;
-$maxnis = "NIS" . sprintf("%03s", $noUrut);
+$maxnis = substr(date('Y'), -2) . sprintf("%03s", $noUrut);
 
 ?>
 
@@ -87,7 +87,14 @@ $maxnis = "NIS" . sprintf("%03s", $noUrut);
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="walsan" class="col-sm-2 col-form-label">No.Walsan</label>
+                                    <label for="walisantri" class="col-sm-2 col-form-label">Wali Santri</label>
+                                    <label for="walisantri" class="col-sm-1 col-form-label">:</label>
+                                    <div class="col-sm-9" style="margin-left: -50px;">
+                                        <input type="text" name="walisantri" required class="form-control border-0 border-bottom ps-2" id="walisantri">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="walsan" class="col-sm-2 col-form-label">No.HP</label>
                                     <label for="walsan" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">
                                         <input type="text" name="walsan" class="form-control border-0 border-bottom ps-2" id="walsan">

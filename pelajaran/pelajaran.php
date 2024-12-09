@@ -65,7 +65,7 @@ if($msg == 'updated') {
             }
             ?>
             <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <div class="card">
                         <div class="card-header">
                             <i class="fa-solid fa-plus"></i> Tambah Pelajaran
@@ -75,6 +75,10 @@ if($msg == 'updated') {
                                 <div class="mb-3">
                                     <label for="pelajaran" class="form-label ps-1">Pelajaran</label>
                                     <input type="text" class="form-control" id="pelajaran" name="pelajaran" placeholder="Nama Pelajaran" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kode" class="form-label ps-1">Kode</label>
+                                    <input type="text" name="kode" id="kode" class="form-control" placeholder="Kode Pelajaran">
                                 </div>
                                 <div class="mb-3">
                                     <label for="jurusan" class="form-label ps-1">Jurusan</label>
@@ -104,7 +108,7 @@ if($msg == 'updated') {
                         </div>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-9">
                     <div class="card">
                         <div class="card-header">
                             <i class="fa-solid fa-list"></i> Data Pelajaran
@@ -156,6 +160,7 @@ if($msg == 'updated') {
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col"><center>Kode</center></th>
                                         <th scope="col"><center>Mata Pelajaran</center></th>
                                         <th scope="col"><center>Jurusan</center></th>
                                         <th scope="col"><center>Guru</center></th>
@@ -168,6 +173,7 @@ if($msg == 'updated') {
                                     while ($data = mysqli_fetch_array($queryPelajaran)) { ?>
                                     <tr>
                                         <th scope="row"><?= $no++ ?></th>
+                                        <td><?= $data['kode'] ?></td>
                                         <td><?= $data['pelajaran'] ?></td>
                                         <td><?= $data['jurusan'] ?></td>
                                         <td><?= $data['guru'] ?></td>

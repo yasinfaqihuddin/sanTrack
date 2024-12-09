@@ -45,6 +45,14 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
 
 ?>
 
+<!-- <style>
+#nama {
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 10px 0;
+}
+</style> -->
+
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -91,11 +99,16 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
                                         <?php
                                         $querySiswa = mysqli_query($koneksi, "SELECT * FROM tbl_siswa");
                                         while($data = mysqli_fetch_array($querySiswa)) { ?>
-                                            <option value="<?= $data['nis'] ?>"><?= $data['nis'] . '-' . $data['nama'] ?></option>
+                                            <option value="<?= $data['nis'] ?>">
+                                                <?= $data['nis'] . '-' . $data['nama'] ?>
+                                            </option>
                                         <?php
                                         }
                                         ?>
-                                    </select>                                
+                                    </select>
+                                </div>
+                                <div id="container-nama">
+
                                 </div>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text"><i class="fa-solid fa-location-arrow fa-sm"></i></span>
@@ -109,7 +122,7 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
                         </div>
                         <div class="card-body border mt-2 rounded">
                             <div class="input-group p-2">
-                                <span class="input-group-text col-2 ps-2 fw-bold">Sum</span>
+                                <span class="input-group-text col-2 ps-2 fw-bold">Total</span>
                                 <input type="text" name="sum" placeholder="Total Nilai" class="form-control" id="total_nilai" required readonly>
                             </div>
                             <div class="input-group p-2">
@@ -121,7 +134,7 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
                                 <input type="text" name="max" placeholder="Nilai Tertinggi" class="form-control" id="nilai_tertinggi" required readonly>
                             </div>
                             <div class="input-group p-2">
-                                <span class="input-group-text col-2 ps-2 fw-bold">Avg</span>
+                                <span class="input-group-text col-2 ps-2 fw-bold">Rata-rata</span>
                                 <input type="text" name="avg" placeholder="Nilai Rata-rata" class="form-control" id="rata2" required readonly>
                             </div>
                         </div>
@@ -143,7 +156,7 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
                                         </tr>
                                     </thead>
                                     <tbody id="kejuruan">
-    
+
                                     </tbody>
                                 </table>
                             </div>
@@ -169,7 +182,22 @@ $maxno = "UTS-" . sprintf("%03s", $noUrut);
 
             ajax.open('GET', 'ajax-mapel.php?jurusan=' + jurusan.value, true);
             ajax.send();
-        })
+        });
+
+        const nis = document.getElementById('nis');
+        const namaSantri= document.getElementById('container-nama');
+
+        nis.addEventListener('change', function() {
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    namaSantri.innerHTML = ajax.responseText;
+                }
+            }
+            ajax.open('GET', 'ajax-nama.php?nis=' + nis.value, true);
+            ajax.send();
+        });
 
         const total = document.getElementById('total_nilai');
         const minValue = document.getElementById('nilai_terendah');

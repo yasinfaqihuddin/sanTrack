@@ -70,7 +70,6 @@ $data = mysqli_fetch_array($sekolah);
                         <div class="row">
                             <div class="col-4 text-center px-5">
                                 <input type="hidden" name="gbrLama" value="<?= $data['gambar'] ?>">
-                                <!-- <img src="../asset/image/<?= $data['gambar'] ?>" alt="gambar sekolah" style="height: 98px; width: 98px;"> -->
                                 <img src="../asset/image/<?= $data['gambar'] ?>" alt="gambar sekolah" style="width: 100%;">
                                 <input type="file" name="image" class="form-control form-control-sm mt-3">
                                 <small class="text-secondary">Pilih gambar PNG, JPG, atau JPEG dengan ukuran maximal 1 MB</small>
@@ -85,6 +84,13 @@ $data = mysqli_fetch_array($sekolah);
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    <label for="kepsek" class="col-sm-2 col-form-label">Kepala Sekolah</label>
+                                    <label for="kepsek" class="col-sm-1 col-form-label">:</label>
+                                    <div class="col-sm-9" style="margin-left: -50px;">
+                                        <input type="text" name="kepsek" id="kepsek" class="form-control border-0 border-bottom" value="<?= $data['kepsek'] ?>" placeholder="nama kepala sekolah">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
                                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                                     <label for="email" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">
@@ -96,8 +102,19 @@ $data = mysqli_fetch_array($sekolah);
                                     <label for="status" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">
                                         <select name="status" id="status" class="form-select border-0 border-bottom" required>
-                                            <option value="Negeri">Negeri</option>
-                                            <option value="Swasta">Swasta</option>
+                                            <!-- <option value="Negeri">Negeri</option>
+                                            <option value="Swasta">Swasta</option> -->
+                                            <?php
+                                            $status = ['Negeri', 'Swasta'];
+                                            foreach($status as $stt) {
+                                                if ($data['status'] == $stt) { ?>
+                                                <option value="<?= $stt ?>" selected><?= $stt ?></option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $stt ?>"><?= $stt ?></option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -106,10 +123,17 @@ $data = mysqli_fetch_array($sekolah);
                                     <label for="akreditasi" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">
                                         <select name="akreditasi" id="akreditasi" class="form-select border-0 border-bottom" required>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="-">-</option>
+                                            <?php
+                                            $akreditasi = ['A', 'B', 'C', '-'];
+                                            foreach($akreditasi as $akre) {
+                                                if ($data['akreditasi'] == $akre) { ?>
+                                                <option value="<?= $akre ?>" selected><?= $akre ?></option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $akre ?>"><?= $akre ?></option>
+                                                <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -125,6 +149,13 @@ $data = mysqli_fetch_array($sekolah);
                                     <label for="visimisi" class="col-sm-1 col-form-label">:</label>
                                     <div class="col-sm-9" style="margin-left: -50px;">
                                         <textarea name="visimisi" id="visimisi" cols="30" rows="3" class="form-control" required><?= $data['visimisi'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="hp" class="col-sm-2 col-form-label">No.HP</label>
+                                    <label for="hp" class="col-sm-1 col-form-label">:</label>
+                                    <div class="col-sm-9" style="margin-left: -50px;">
+                                        <input type="tel" name="hp" id="hp" class="form-control border-0 border-bottom" value="<?= $data['hp'] ?>" placeholder="No.HP sekolah">
                                     </div>
                                 </div>
                             </div>

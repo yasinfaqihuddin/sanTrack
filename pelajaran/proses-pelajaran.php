@@ -11,6 +11,7 @@ require_once "../config.php";
 
 if(isset($_POST['simpan'])) {
     $pelajaran  = htmlspecialchars($_POST['pelajaran']);
+    $kode       = htmlspecialchars($_POST['kode']);
     $jurusan    = $_POST['jurusan'];
     $guru       = $_POST['guru'];
 
@@ -20,7 +21,7 @@ if(isset($_POST['simpan'])) {
         return;
     }
 
-    mysqli_query($koneksi, "INSERT INTO tbl_pelajaran VALUES (null, '$pelajaran', '$jurusan', '$guru')");
+    mysqli_query($koneksi, "INSERT INTO tbl_pelajaran VALUES (null, '$kode', '$pelajaran', '$jurusan', '$guru')");
 
     header("location:pelajaran.php?msg=added");
     return;
@@ -28,6 +29,7 @@ if(isset($_POST['simpan'])) {
 
 if (isset($_POST['update'])) {
     $id         = $_POST['id'];
+    $kode       = $_POST['kode'];
     $pelajaran  = htmlspecialchars($_POST['pelajaran']);
     $jurusan    = $_POST['jurusan'];
     $guru       = $_POST['guru'];
@@ -45,7 +47,7 @@ if (isset($_POST['update'])) {
         }
     }
 
-    mysqli_query($koneksi, "UPDATE tbl_pelajaran SET pelajaran = '$pelajaran', jurusan = '$jurusan', guru = '$guru' WHERE id = $id");
+    mysqli_query($koneksi, "UPDATE tbl_pelajaran SET kode = '$kode', pelajaran = '$pelajaran', jurusan = '$jurusan', guru = '$guru' WHERE id = $id");
 
     header("location:pelajaran.php?msg=updated");
     return;

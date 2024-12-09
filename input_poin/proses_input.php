@@ -15,10 +15,10 @@ if (isset($_POST['simpan'])) {
     $plgrn  = $_POST['pelanggaran'];
     $waktu  = $_POST['waktu'];
     $saksi  = $_POST['saksi'];
-    $nama   = $_POST['name'];
+    $nmPelapor   = $_POST['pelapor'];
     $note   = $_POST['catatan'];
 
-    mysqli_query($koneksi, "INSERT INTO tbl_input_pelanggaran VALUES(NULL, STR_TO_DATE('$tgl', '%m/%d/%Y'), '$nis', '$plgrn', '$waktu', NULL, NULL, '$saksi', '$nama', '$note')");
+    mysqli_query($koneksi, "INSERT INTO tbl_input_pelanggaran VALUES(NULL, STR_TO_DATE('$tgl', '%m/%d/%Y'), '$nis', '$plgrn', '$waktu', NULL, NULL, '$saksi', '$nmPelapor', '$note')");
 
     echo "<script>
                 alert('Input data pelanggaran berhasil');

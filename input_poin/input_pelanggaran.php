@@ -44,11 +44,14 @@ require_once "../template/sidebar.php";
                                             <?php
                                             $querySiswa = mysqli_query($koneksi, "SELECT * FROM tbl_siswa");
                                             while($data = mysqli_fetch_array($querySiswa)) { ?>
-                                                <option value="<?= $data['nama'] ?>"><?= $data['nis'] . '-' . $data['nama'] ?></option>
+                                                <option value="<?= $data['nis'] ?>"><?= $data['nis'] . '-' . $data['nama'] ?></option>
                                             <?php
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div id="hidden">
+
                                     </div>
                                     <div class="mb-2 input-group">
                                         <span class="input-group-text"><i class="fas fa-triangle-exclamation fa-sm"></i></span>
@@ -77,7 +80,7 @@ require_once "../template/sidebar.php";
                                         </select>
                                     </div>
                                     <div class="mb-2 input-group">
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Nama saksi">
+                                        <input type="text" name="pelapor" id="pelapor" class="form-control" placeholder="Nama saksi">
                                     </div>
                                 </div>
                                 <div class="col-8">
@@ -97,18 +100,34 @@ require_once "../template/sidebar.php";
     ?>
 
     <script>
+
+        const nis   = document.getElementById('nis');
+        const hidden= document.getElementById('hidden');
+
+        nis.addEventListener('change', function() {
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    hidden.innerHTML = ajax.responseText;
+                }
+            }
+            ajax.open('GET', 'ajax-pelanggaran.php?nis=' +  nis.value, true);
+            ajax.send();
+        });
+
         function sendMessage() {
             const date = document.getElementById("date").value;
             const nis = document.getElementById("nis").value;
+            const nama = document.getElementbyId("nama").value
             const pelanggaran = document.getElementById("pelanggaran").value;
             const waktu = document.getElementById("waktu").value;
             const saksi = document.getElementById("saksi").value;
-            const nama = document.getElementById("name").value;
+            const nmPelapor = document.getElementById("pelapor").value;
             const catatan = document.getElementById("catatan").value;
+            const phone = document.getElementById("phone").value;
 
-            // const url = "https://api.whatsapp.com/send?phone=<?//= $dt['walsan'] ?>&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20Mahad%20Tsurayya%20ingin%20melaporkan%20bahwasanya%20ananda%20*"+ nis +"*%20telah%20melakukan%20pelanggaran%20berupa%20*"+ pelanggaran +"*.%20Yang%20disaksikan%20oleh%20*"+ nama +"*%20(*"+ saksi +"*)%0AKami%20telah%20memberikan%20teguran%20kepada%20ananda.%20Semoga%20ananda%20bisa%20tersadar%20dan%20berusaha%20memperbaiki%20kesalahannya%0A%0ASekian%20dari%20Kami.%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
-
-            const url = "https://api.whatsapp.com/send?phone=<?= $dt['walsan'] ?>&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20Mahad%20Tsurayya%20ingin%20melaporkan%20bahwasanya%20ananda%20*"+ nis +"*%20telah%20melakukan%20pelanggaran%20berupa%20*"+ pelanggaran +"*.%20Pada%20*"+ waktu +"*.%20Yang%20disaksikan%20oleh%20*"+ name +"*%20*("+ saksi +")*%0A%0AKami%20telah%20memberikan%20teguran%20kepada%20ananda.%20Semoga%20ananda%20bisa%20tersadar%20dan%20berusaha%20memperbaiki%20kesalahannya.%0A%0ACatatan%"+ catatan +"%3A%20%22%22%0A%0ASekian%20dari%20Kami.%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
+            const url = "https://api.whatsapp.com/send?phone="+ phone +"&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20Mahad%20Tsurayya%20ingin%20melaporkan%20bahwasanya%20ananda%20*"+ nama +"*%20telah%20melakukan%20pelanggaran%20berupa%20*"+ pelanggaran +"*.%20Pada%20*"+ waktu +"*.%20Yang%20disaksikan%20oleh%20*"+ nmPelapor +"*%20*("+ saksi +")*%0A%0AKami%20telah%20memberikan%20teguran%20kepada%20ananda.%20Semoga%20ananda%20bisa%20tersadar%20dan%20berusaha%20memperbaiki%20kesalahannya.%0A%0ACatatan%"+ catatan +"%3A%20%22%22%0A%0ASekian%20dari%20Kami.%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
 
             window.open(url);
         }

@@ -93,7 +93,7 @@ $content = '
 <body>
     <div class="title">
         <h3>Laporan Nilai Ujian</h3>
-        <h2>Rumah Gemilang Indonesia</h2>
+        <h2>Mahad Tsurayya</h2>
     </div>
     <table>
         <thead>
@@ -109,6 +109,10 @@ $content = '
             <tr>
                 <th class="head-left">NIS</th>
                 <th class="head-left">: '. $data['nis'] .'</th>
+            </tr>
+            <tr>
+                <th class="head-left">Nama</th>
+                <th class="head-left">: '. $data['nama'] .'</th>
             </tr>
             <tr>
                 <th class="head-left">Jurusan</th>

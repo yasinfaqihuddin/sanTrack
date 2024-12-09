@@ -46,6 +46,7 @@ require_once "../template/sidebar.php";
                             <tr>
                                 <th scope="col"><center>No Ujian</center></th>
                                 <th scope="col"><center>NIS</center></th>
+                                <th scope="col"><center>Nama</center></th>
                                 <th scope="col"><center>Jurusan</center></th>
                                 <th scope="col"><center>Nilai Terendah</center></th>
                                 <th scope="col"><center>Nilai Tertinggi</center></th>
@@ -61,6 +62,7 @@ require_once "../template/sidebar.php";
                                 <tr>
                                     <td><?= $data['no_ujian'] ?></td>
                                     <td><?= $data['nis'] ?></td>
+                                    <td><?= $data['nama'] ?></td>
                                     <td><?= $data['jurusan'] ?></td>
                                     <td align="center"><?= $data['nilai_terendah'] ?></td>
                                     <td align="center"><?= $data['nilai_tertinggi'] ?></td>
@@ -93,7 +95,7 @@ require_once "../template/sidebar.php";
                     <?php
                     $dataUjian = mysqli_query($koneksi, "SELECT * FROM tbl_ujian");
                     while ($data = mysqli_fetch_array($dataUjian)) { ?>
-                        <option value="<?= $data['no_ujian'] ?>"><?= $data['no_ujian'] . ' - ' . $data['nis'] . ' - ' . $data['jurusan'] ?></option>
+                        <option value="<?= $data['no_ujian'] ?>"><?= $data['no_ujian'] . ' - ' . $data['nis'] . ' - ' . $data['nama'] . ' - ' . $data['jurusan'] ?></option>
                         <?php
                     }
                     ?>

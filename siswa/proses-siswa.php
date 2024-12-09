@@ -15,6 +15,7 @@ if(isset($_POST['simpan'])) {
     $kelas  = $_POST["kelas"];
     $jurusan= $_POST["jurusan"];
     $alamat = htmlspecialchars($_POST['alamat']);
+    $walisantri = htmlspecialchars($_POST["walisantri"]);
     $walsan = htmlspecialchars($_POST['walsan']);
     $foto   = htmlspecialchars($_FILES['image']['name']);
 
@@ -24,12 +25,8 @@ if(isset($_POST['simpan'])) {
     } else {
         $foto= 'default.png';
     }
-
-    if($walsan = null) {
-        $walsan = '089621966663';
-    }
-
-    mysqli_query($koneksi, "INSERT INTO tbl_siswa VALUES('$nis', '$nama', '$alamat', '$kelas', '$jurusan', '$walsan', '$foto')");
+    
+    mysqli_query($koneksi, "INSERT INTO tbl_siswa VALUES('$nis', '$nama', '$alamat', '$kelas', '$jurusan', '$walisantri', '$walsan', '$foto')");
 
     echo "<script>
                 alert('Data siswa berhasil disimpan');
@@ -42,6 +39,7 @@ if(isset($_POST['simpan'])) {
     $kelas  = $_POST['kelas'];
     $jurusan= $_POST['jurusan'];
     $alamat = htmlspecialchars($_POST['alamat']);
+    $walisantri = htmlspecialchars($_POST['walisantri']);
     $walsan = htmlspecialchars($_POST['walsan']);
     $foto   = htmlspecialchars($_POST['fotoLama']);
 
@@ -60,6 +58,7 @@ if(isset($_POST['simpan'])) {
                             alamat  = '$alamat',
                             kelas   = '$kelas',
                             jurusan = '$jurusan',
+                            wali_santri = '$walisantri',
                             walsan = '$walsan',
                             foto    = '$fotoSiswa'
                             WHERE nis = '$nis'

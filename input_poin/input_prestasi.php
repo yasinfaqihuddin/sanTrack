@@ -44,11 +44,14 @@ require_once "../template/sidebar.php";
                                         <?php
                                         $querySiswa = mysqli_query($koneksi,"SELECT * FROM tbl_siswa");
                                         while($data = mysqli_fetch_array($querySiswa)) { ?>
-                                            <option value="<?= $data['nis'] . '-' . $data['nama'] ?>"><?= $data['nis'] . '-' . $data['nama'] ?></option>
+                                            <option value="<?= $data['nis'] ?>"><?= $data['nis'] . '-' . $data['nama'] ?></option>
                                         <?php
                                         }
                                         ?>
                                     </select>
+                                </div>
+                                <div id="hidden">
+                                    
                                 </div>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text"><i class="fas fa-award"></i></span>
