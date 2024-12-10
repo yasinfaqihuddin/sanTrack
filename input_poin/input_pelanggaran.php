@@ -112,7 +112,7 @@ require_once "../template/sidebar.php";
                     hidden.innerHTML = ajax.responseText;
                 }
             }
-            ajax.open('GET', 'ajax-pelanggaran.php?nis=' +  nis.value, true);
+            ajax.open('GET', 'ajax-pelanggaran.php?nis=' + nis.value, true);
             ajax.send();
         });
 

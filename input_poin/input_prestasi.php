@@ -80,6 +80,22 @@ require_once "../template/sidebar.php";
     </main>
 
     <script>
+
+        const nis   = document.getElementById('nis');
+        const hidden= document.getElementById('hidden');
+
+        nis.addEventListener('change', function() {
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    hidden.innetHTML = ajax.responseText;
+                }
+            }
+            ajax.open('GET', 'ajax-prestasi.php?nis=' + nis.value, true);
+            ajax.send();
+        });
+
         function sendMessage() {
             const date      = document.getElementById("date").value;
             const nis       = document.getElementById("nis").value;
