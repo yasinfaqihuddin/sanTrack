@@ -103,7 +103,7 @@ require_once "../template/sidebar.php";
             const catatan   = document.getElementById("catatan").value;
             const phone     = document.getElementById("phone").value;
 
-            const url = "https://api.whatsapp.com/send?phone="+ phone +"&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20Mahad%20ingin%20memberitahukan%20kabar%20gembira%20bahwasanya%20ananda%20*"+ nama +"*%20pada%20*"+ date +"*%20telah%20mendapatkan%20prestasi%20berupa%20*"+ prestasi +"*.%0AKami%20berharap%20semoga%20ananda%20bisa%20menjaga%20istiqomah%20menjalankan%20kebaikan-kebaikan%0A%0ASekian%20dari%20Kami.%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
+            const url = "https://api.whatsapp.com/send?phone="+ phone +"&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20Mahad%20ingin%20memberitahukan%20kabar%20gembira%20bahwasanya%20ananda%20*"+ nama +"*%20pada%20*2024-12-11*%20telah%20mendapatkan%20prestasi%20berupa%20*"+ prestasi +"*.%0AKami%20berharap%20semoga%20ananda%20bisa%20menjaga%20istiqomah%20menjalankan%20kebaikan-kebaikan%0A%0ACatatan%3A%20*"+ catatan +"*%0A%0ASekian%20dari%20Kami.%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
 
             window.open(url);
         }
