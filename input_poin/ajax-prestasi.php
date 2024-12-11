@@ -6,8 +6,8 @@ $nis = $_GET['nis'];
 $query = mysqli_query($koneksi, "SELECT * FROM tbl_siswa WHERE nis = '$nis'");
 while ($data = mysqli_fetch_array($query)) { ?>
     <tr>    
-        <td></td><input type="text" name="nama" id="nama" value="<?= $data['nama'] ?>">
-        <td></td><input type="text" name="phone" id="phone" value="<?= $data['walsan'] ?>">
+        <td></td><input type="hidden" name="namaSantri" id="nama" value="<?= $data['nama'] ?>">
+        <td></td><input type="hidden" name="phone" id="phone" value="<?= $data['walsan'] ?>">
     </tr>
 <?php
 }
