@@ -23,7 +23,7 @@ require_once "../template/sidebar.php";
                 <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
                 <li class="breadcrumb-item active">Input Pelanggaran</li>
             </ol>
-                <form onsubmit="sendMessage()">
+                <form onsubmit="sendMessage()" action="proses_input.php" method="POST">
                     <div class="card">
                         <div class="card-header">
                             <span class="h5 my-2"><i class="fa-solid fa-list"></i> Input Pelanggaran</span>
@@ -66,6 +66,9 @@ require_once "../template/sidebar.php";
                                             ?>
                                         </select>
                                     </div>
+                                    <div id="poin">
+
+                                    </div>
                                     <div class="mb-2 input-group">
                                         <span class="input-group-text"><i class="fas fa-clock fa-sm"></i></span>
                                         <input type="text" name="waktu" id="waktu" class="form-control" placeholder="Waktu 'Istirahat siang'">
@@ -99,6 +102,8 @@ require_once "../template/sidebar.php";
 
         const nis   = document.getElementById('nis');
         const hidden= document.getElementById('hidden');
+        const plgrn = document.getElementById('pelanggaran');
+        const poin  = document.getElementById('poin');
 
         nis.addEventListener('change', function() {
             let ajax = new XMLHttpRequest();
@@ -112,17 +117,31 @@ require_once "../template/sidebar.php";
             ajax.send();
         });
 
+        plgrn.addEventListener('change', function() {
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    poin.innerHTML = ajax.responseText;
+                }
+            }
+            ajax.open('GET', 'ajax-poinPlgrn.php?plgrn=' + plgrn.value, true);
+            ajax.send();
+        });
+
         function sendMessage() {
-            const date = document.getElementById("date").value;
-            const sekolah = document.getElementById("namaSekolah").value;
-            const nis = document.getElementById("nis").value;
-            const nama = document.getElementById("namaSantri").value;
-            const pelanggaran = document.getElementById("pelanggaran").value;
-            const waktu = document.getElementById("waktu").value;
-            const saksi = document.getElementById("saksi").value;
+            const date      = document.getElementById("date").value;
+            const sekolah   = document.getElementById("namaSekolah").value;
+            const nis       = document.getElementById("nis").value;
+            const nama      = document.getElementById("namaSantri").value;
+            const pelanggaran= document.getElementById("pelanggaran").value;
+            const kategori  = document.getElementById("kategori").value;
+            const poin      = document.getElementById("poin").value;
+            const waktu     = document.getElementById("waktu").value;
+            const saksi     = document.getElementById("saksi").value;
             const nmPelapor = document.getElementById("pelapor").value;
-            const catatan = document.getElementById("catatan").value;
-            const phone = document.getElementById("phone").value;
+            const catatan   = document.getElementById("catatan").value;
+            const phone     = document.getElementById("phone").value;
 
             const url = "https://api.whatsapp.com/send?phone="+ phone +"&text=Assalamualaikum%20Warohmatullahi%20Wabarokatuh%20Bapak%2FIbu%0A%0AKami%20dari%20pihak%20*"+ sekolah +"*%20ingin%20melaporkan%20bahwasanya%20pada%20*"+ date +"*%20ananda%20*"+ nama +"*%20telah%20melakukan%20pelanggaran%20berupa%20*"+ pelanggaran +"*.%20Pada%20*"+ waktu +"*.%20Ananda%20disaksikan%20oleh%20*"+ nmPelapor +"*(*"+ saksi +"*).%0A%0AKami%20telah%20memberikan%20teguran%20kepada%20ananda.%20Semoga%20ananda%20segera%20berusaha%20memperbaiki%20kesalahannya.%0A%0ACatatan%3A%20*"+ catatan +"*%0A%0ASekian%20dari%20kami%0AWassalamualaikum%20Warohmatullahi%20Wabarokatuh";
 
