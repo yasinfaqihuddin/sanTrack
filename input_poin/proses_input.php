@@ -27,6 +27,21 @@ if (isset($_POST['simpan'])) {
                 alert('Input data pelanggaran berhasil');
                 document.location.href = 'input_pelanggaran.php';
         </script>";
+} else if (isset($_POST['send'])) {
+    $tgl    = $_POST['tanggal'];
+    $nis    = $_POST['nis'];
+    $nama   = $_POST['nama'];
+    $prsts  = $_POST['prestasi'];
+    $kategori= $_POST['kategori'];
+    $poin   = $_POST['poin'];
+    $note   = $_POST['catatan'];
+
+    mysqli_query($koneksi, "INSERT INTO tbl_input_prestasi VALUES(NULL, '$tgl', '$nis', '$nama', '$prsts', '$kategori', '$poin', '$note')");
+
+    echo "<script>
+                alert('Input data prestasi berhasil');
+                document.location.href = 'input_prestasi.php';
+        </script>";
     return;
 }
 

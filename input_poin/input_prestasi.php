@@ -23,11 +23,11 @@ require_once "../template/sidebar.php";
                 <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
                 <li class="breadcrumb-item active">Input Prestasi</li>
             </ol>
-            <form onsubmit="sendMessage()">
+            <form onsubmit="sendMessage()" action="proses_input.php" method="POST">
                 <div class="card">
                     <div class="card-header">
                         <span class="h5 my-2"><i class="fa-solid fa-list"></i> Input Prestasi</span>
-                        <button type="submit" name="simpan" id="btnKirim" class="btn btn-primary float-end"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+                        <button type="submit" name="send" id="btnKirim" class="btn btn-primary float-end"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
                         <button type="reset" class="btn btn-danger float-end me-1"><i class="fa-solid fa-rotate-right"></i> Reset</button>
                     </div>
                     <div class="card-body">
@@ -66,6 +66,9 @@ require_once "../template/sidebar.php";
                                         ?>
                                     </select>
                                 </div>
+                                <div id="poin">
+
+                                </div>
                             </div>
                             <div class="col-8">
                                 <div class="mb-2 input-group">
@@ -83,6 +86,8 @@ require_once "../template/sidebar.php";
 
         const nis   = document.getElementById('nis');
         const hidden= document.getElementById('hidden');
+        const prsts = document.getElementById('prestasi');
+        const poin  = document.getElementById('poin');
 
         nis.addEventListener('change', function() {
             let ajax = new XMLHttpRequest();
@@ -93,6 +98,18 @@ require_once "../template/sidebar.php";
                 }
             }
             ajax.open('GET', 'ajax-prestasi.php?nis=' + nis.value, true);
+            ajax.send();
+        });
+
+        prsts.addEventListener('change', function() {
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    poin.innerHTML = ajax.responseText;
+                }
+            }
+            ajax.open('GET', 'ajax-poinPrsts.php?prsts=' + prsts.value, true);
             ajax.send();
         });
 
